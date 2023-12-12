@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+</style>
+<title>Calcul Age</title>
+</head>
+<body>
+<div id ="parent" >
+<label for="ch1"> la chaine de caractères </label>
+<input type="text" name ="ch1">
+</br>
+</br>
+<button id ="b1"> Le mot le plus long </button>
+</div>
+</body>
+<script>
+const btn =document.getElementById('b1');
+const parent =document.getElementById("parent");
+const ul = document.createElement('ul');
+parent.appendChild(ul);
+btn.addEventListener('click',()=>{
+const chaine = document.getElementsByName("ch1").item(0);
+const ch= chaine.value;
+chaine.value ="";
+const mots = ch.split(" ");
+let motlong ="";
+for(mot of mots)
+{
+if(mot.length> motlong.length)
+motlong = mot;
+}
+const li = document.createElement('li');
+
+li.innerHTML= "Pour la chaine '"+ch+"' le mot le plus long est '"+motlong+"'
+avec longueur égale "+motlong.length ;
+ul.appendChild(li);
+const supbtn= document.createElement('button');
+supbtn.innerText = 'Supprimer';
+li.appendChild(supbtn);
+supbtn.addEventListener('click', () => {
+ul.removeChild(li);
+});
+
+});
+</script>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.form-control i{
+position: absolute;
+top: 33px;
+right: 10px;
+visibility: hidden;
+}
+.hide{
+display: none;
+}
+</style>
+<title>Calcul Age</title>
+</head>
+<body>
+<div id ="parent" class="form-control i">
+<label for="d1"> Date de début</label>
+<input type="date" id ="d1" value="2023-01-01" min="2023-01-01" max="2023-
+12-31">
+</br>
+<label for="d2"> Date de fin</label>
+<input type="date" id ="d2" value="2023-12-31" min="1920-01-01" max="2023-
+12-31">
+</br>
+<button > Calculer la différence </button>
+</br>
+<label> Le nombre de jours est: </label>
+</br>
+<input type ="text" id="resultat">
+</div>
+</body>
+<script>
+const but= document.getElementsByTagName('button').item(0);
+const resultat= document.getElementById('resultat');
+const jour= document.getElementsByTagName('label').item(2);
+but.addEventListener('click',() => {
+const d1=document.getElementById('d1').value;
+const dat1 = new Date(d1);
+const d2=document.getElementById('d2').value;
+const dat2 = new Date(d2);
+if(d1<=d2)
+{
+
+const diff_ms = (dat2.getTime()- dat1.getTime())/(1000*3600*24);
+resultat.setAttribute("value", diff_ms);
+}
+else
+{
+resultat.className ="hide";
+jour.innerHTML="erreur Date de début doit etre inférieur à date de fin!!!";
+}
+});
+</script>
+</html>
